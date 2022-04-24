@@ -6,8 +6,6 @@ import cards from "../components/cards/cards";
 const Game = () => {
   const { numberOfCards } = useParams();
 
-  useEffect(() => {}, []);
-
   return (
     <div>
       {cards
