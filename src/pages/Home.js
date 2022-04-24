@@ -1,11 +1,21 @@
 import "../App.css";
 import Header from "../components/Header/Header";
 import { useState } from "react";
-import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import { FormControl, Select, MenuItem } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { Navigation } from "react-router";
 
 const Home = () => {
   const deckSizes = [3, 4, 5, 6, 7, 8, 9, 10];
   const [deckSize, setDeckSize] = useState(3);
+
+  const navigate = useNavigate();
+
+  const startGame = (event) => {
+    event.preventDefault();
+    localStorage.setItem("state", null);
+    navigate(`/play/${deckSize}`);
+  };
 
   return (
     <div>
@@ -15,25 +25,27 @@ const Home = () => {
       <div className="deck-size-form">
         <FormControl>
           <Select
+            value={deckSize}
             className="deck-size-select"
-            onChange={setDeckSize}
             sx={{ fontSize: "1.5rem" }}
+            onChange={(e) => setDeckSize(e.target.value)}
           >
             {deckSizes.map((number) => {
               return (
-                <MenuItem key="number" value={number}>
+                <MenuItem key={number} value={number}>
                   {number}
                 </MenuItem>
               );
             })}
           </Select>
+          <div className="button-container">
+            <button onClick={startGame} className="start-button">
+              Start New Game
+            </button>
+          </div>
         </FormControl>
       </div>
-      <div className="button-container">
-        <button type="submit" className="start-button">
-          Start New Game
-        </button>
-      </div>
+
       <div className="game-rules">
         <h2>Game Rules</h2>
         <div>Present the user with an even number of cards, “face down”.</div>

@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Game from "./pages/Game";
 
@@ -9,8 +9,8 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route index element={<Home />} />
-            <Route exact path="/play/:numberOfCards" component={Game} />
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/play/:numberOfCards" element={<Game />} />
           </Route>
         </Routes>
       </BrowserRouter>
