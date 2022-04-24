@@ -1,13 +1,14 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
 import Card from "../components/cards/Card";
 import cards from "../components/cards/cards";
+import GameHeader from "../components/Header/GameHeader";
 
 const Game = () => {
   const { numberOfCards } = useParams();
 
   return (
     <div>
+      <GameHeader />
       {cards
         .slice(0, numberOfCards * 2)
         .map((card) => (
