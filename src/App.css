@@ -132,7 +132,6 @@
   height: 160px;
   border-radius: 10px;
   background-color: white;
-  color: rgb(123, 6, 6);
   text-align: center;
   display: flex;
   align-items: center;
@@ -151,4 +150,21 @@
 }
 .hide {
   display: none;
+}
+
+.matched {
+  width: 160px;
+  height: 160px;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.matched img {
+  width: 70%;
+  opacity: 40%;
 }

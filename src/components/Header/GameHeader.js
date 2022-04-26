@@ -6,14 +6,17 @@ import { useNavigate } from "react-router-dom";
 
 const GameHeader = () => {
   const deckSizes = [3, 4, 5, 6, 7, 8, 9, 10];
-  const [deckSize, setDeckSize] = useState(3);
+  const [deckSize, setDeckSize] = useState(
+    localStorage.getItem("deckSize", (e) => e.target.value)
+  );
 
   const navigate = useNavigate();
 
   const startGame = (event) => {
     event.preventDefault();
     localStorage.setItem("state", null);
-    navigate(`/play/${deckSize}`);
+    localStorage.setItem("deckSize", deckSize);
+    window.location.replace(`/play/${deckSize}`);
   };
 
   const backToHome = () => {

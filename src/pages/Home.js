@@ -14,6 +14,7 @@ const Home = () => {
   const startGame = (event) => {
     event.preventDefault();
     localStorage.setItem("state", null);
+    localStorage.setItem("deckSize", deckSize);
     navigate(`/play/${deckSize}`);
   };
 
