@@ -13,7 +13,7 @@ const Game = () => {
   const [pairs, setPairs] = useState([]);
   const [moves, setMoves] = useState(0);
   const [bestScore, setBestScore] = useState(
-    JSON.parse(localStorage.getItem("bestScore")) || Number.POSITIVE_INFINITY
+    localStorage.getItem("bestResult") || 0
   );
 
   const restartGame = () => {
@@ -30,6 +30,12 @@ const Game = () => {
       const firstCard = cardNames[0];
       const secondCard = name;
       if (firstCard === secondCard) {
+        if (pairs.length + 2 === deck.length) {
+          alert("Congratulations! Your score is " + moves + " in this round.");
+          if (moves < bestScore) {
+            localStorage.setItem("bestResult", moves);
+          }
+        }
         setPairs([...pairs, activeCards[0], index]);
       }
       setCardNames([...cardNames, name]);
@@ -39,12 +45,7 @@ const Game = () => {
       setActiveCards([index]);
       setCardNames([name]);
     }
-  };
-
-  const checkPairs = () => {
-    if (cardNames[0] === cardNames[1]) {
-      alert("Pair");
-    }
+    setMoves(moves + 1);
   };
 
   useEffect(() => {
@@ -59,10 +60,10 @@ const Game = () => {
       <div className="game-container">
         <div className="data-container">
           <div className="tries">
-            Current tries: <span>0</span>
+            Current tries: <span>{moves}</span>
           </div>
           <div className="best-result">
-            Best: <br /> <span>9</span>
+            Best: <br /> <span>{bestScore}</span>
           </div>
           <button className="restart-button" onClick={restartGame}>
             Restart
