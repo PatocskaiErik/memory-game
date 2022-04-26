@@ -65,3 +65,90 @@
   align-items: center;
   color: rgb(122, 122, 122);
 }
+
+.data-container {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+}
+
+.tries {
+  color: gray;
+  font-size: 17px;
+  display: inline-block;
+  position: relative;
+}
+
+.tries span {
+  color: black;
+}
+
+.best-result {
+  justify-self: center;
+  color: gray;
+  text-align: center;
+}
+.best-result span {
+  color: black;
+  font-size: 40px;
+}
+
+.restart-button {
+  justify-self: right;
+  text-transform: uppercase;
+  height: 50px;
+  width: 150px;
+  vertical-align: middle;
+  color: black;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.game-container {
+  margin-left: 250px;
+  margin-right: 250px;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 160px);
+  justify-items: stretch;
+  justify-content: center;
+  align-items: center;
+  column-gap: 15px;
+  row-gap: 15px;
+}
+
+.card {
+  box-sizing: border-box;
+  width: 160px;
+  height: 160px;
+  border-radius: 10px;
+  background-color: white;
+  color: rgb(123, 6, 6);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s;
+}
+
+.card img {
+  width: 70%;
+}
+
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}

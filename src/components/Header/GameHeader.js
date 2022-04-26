@@ -16,9 +16,19 @@ const GameHeader = () => {
     navigate(`/play/${deckSize}`);
   };
 
+  const backToHome = () => {
+    navigate("/");
+  };
+
   return (
     <header className="header">
-      <img className="header-logo" src={logo} alt="Evista logo" />
+      <img
+        className="header-logo"
+        src={logo}
+        alt="Evista logo"
+        onClick={backToHome}
+        style={{ cursor: "pointer" }}
+      />
       <div className="header-title">Deck Size:</div>
       <Select
         value={deckSize}
