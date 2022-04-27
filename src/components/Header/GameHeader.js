@@ -1,4 +1,5 @@
 import "./Header.css";
+import "../../App.css";
 import logo from "./evista.png";
 import { useState } from "react";
 import { Select, MenuItem } from "@mui/material";
@@ -33,20 +34,22 @@ const GameHeader = () => {
         style={{ cursor: "pointer" }}
       />
       <div className="header-title">Deck Size:</div>
-      <Select
-        value={deckSize}
-        className="deck-size-select"
-        sx={{ fontSize: "1.5rem" }}
-        onChange={(e) => setDeckSize(e.target.value)}
-      >
-        {deckSizes.map((number) => {
-          return (
-            <MenuItem key={number} value={number}>
-              {number}
-            </MenuItem>
-          );
-        })}
-      </Select>
+      <div className="deck-selector">
+        <Select
+          value={deckSize}
+          className="deck-size-select"
+          sx={{ fontSize: "1.5rem" }}
+          onChange={(e) => setDeckSize(e.target.value)}
+        >
+          {deckSizes.map((number) => {
+            return (
+              <MenuItem key={number} value={number}>
+                {number}
+              </MenuItem>
+            );
+          })}
+        </Select>
+      </div>
       <button onClick={startGame} className="start-button">
         Start New Game
       </button>

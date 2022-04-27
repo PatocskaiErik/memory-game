@@ -2,142 +2,102 @@ const cards = [
   {
     id: 1,
     name: "angular",
-    image: "angular.png",
-    matched: false,
-    clicked: false
+    image: "angular.png"
   },
   {
     id: 1,
     name: "angular",
-    image: "angular.png",
-    matched: false,
-    clicked: false
+    image: "angular.png"
   },
   {
     id: 2,
     name: "d3",
-    image: "d3.png",
-    matched: false,
-    clicked: false
+    image: "d3.png"
   },
   {
     id: 2,
     name: "d3",
-    image: "d3.png",
-    matched: false,
-    clicked: false
+    image: "d3.png"
   },
   {
     id: 3,
     name: "evista",
-    image: "evista.png",
-    matched: false,
-    clicked: false
+    image: "evista.png"
   },
   {
     id: 3,
     name: "evista",
-    image: "evista.png",
-    matched: false,
-    clicked: false
+    image: "evista.png"
   },
   {
     id: 4,
     name: "jenkins",
-    image: "jenkins.png",
-    matched: false,
-    clicked: false
+    image: "jenkins.png"
   },
   {
     id: 4,
     name: "jenkins",
-    image: "jenkins.png",
-    matched: false,
-    clicked: false
+    image: "jenkins.png"
   },
   {
     id: 5,
     name: "postcss",
-    image: "postcss.png",
-    matched: false,
-    clicked: false
+    image: "postcss.png"
   },
   {
     id: 5,
     name: "postcss",
-    image: "postcss.png",
-    matched: false,
-    clicked: false
+    image: "postcss.png"
   },
   {
     id: 6,
     name: "react",
-    image: "react.png",
-    matched: false,
-    clicked: false
+    image: "react.png"
   },
   {
     id: 6,
     name: "react",
-    image: "react.png",
-    matched: false,
-    clicked: false
+    image: "react.png"
   },
   {
     id: 7,
     name: "redux",
-    image: "redux.png",
-    matched: false,
-    clicked: false
+    image: "redux.png"
   },
   {
     id: 7,
     name: "redux",
-    image: "redux.png",
-    matched: false,
-    clicked: false
+    image: "redux.png"
   },
   {
     id: 8,
     name: "sass",
-    image: "sass.png",
-    matched: false,
-    clicked: false
+    image: "sass.png"
   },
   {
     id: 8,
     name: "sass",
-    image: "sass.png",
-    matched: false,
-    clicked: false
+    image: "sass.png"
   },
   {
     id: 9,
     name: "ts",
-    image: "ts.png",
-    matched: false,
-    clicked: false
+    image: "ts.png"
   },
   {
     id: 9,
     name: "ts",
-    image: "ts.png",
-    matched: false,
-    clicked: false
+    image: "ts.png"
   },
   {
     id: 10,
     name: "webpack",
-    image: "webpack.png",
-    matched: false,
-    clicked: false
+    image: "webpack.png"
   },
   {
     id: 10,
     name: "webpack",
-    image: "webpack.png",
-    matched: false,
-    clicked: false
+    image: "webpack.png"
   }
 ];
 export default cards;

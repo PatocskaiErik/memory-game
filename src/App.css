@@ -153,8 +153,6 @@
 }
 
 .matched {
-  width: 160px;
-  height: 160px;
   border-radius: 10px;
   text-align: center;
   display: flex;
@@ -167,4 +165,139 @@
 .matched img {
   width: 70%;
   opacity: 50%;
+}
+
+@media screen and (max-width: 1080px) {
+  .game-container {
+    margin-left: 50px !important;
+    margin-right: 50px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .start-button {
+    height: 50px;
+    width: 160px;
+  }
+
+  .header-logo {
+    height: 50px !important;
+    width: auto;
+  }
+
+  .restart-button {
+    height: 40px !important;
+    width: 130px !important;
+    font-size: 18px !important;
+  }
+
+  .data-container {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header {
+    justify-content: space-evenly;
+  }
+
+  .deck-size-select {
+    width: 100px;
+    height: 50px;
+  }
+
+  .header-title {
+    display: block;
+  }
+
+  .game-container {
+    margin-left: 50px !important;
+    margin-right: 50px !important;
+  }
+
+  .data-container {
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .start-button {
+    height: 40px;
+    width: 140px;
+  }
+
+  .home-title {
+    font-size: 25px;
+  }
+
+  .game-rules {
+    font-size: 14px;
+  }
+
+  .header-logo {
+    height: 40px !important;
+    width: auto;
+  }
+
+  .matched img {
+    width: 50% !important;
+  }
+
+  .restart-button {
+    height: 30px !important;
+    width: 110px !important;
+    font-size: 16px !important;
+  }
+
+  .header {
+    display: flex !important;
+    justify-content: space-evenly !important;
+  }
+
+  .header .deck-size-select {
+    width: 80px;
+    height: 50px;
+    margin-left: 10px;
+  }
+
+  .start-button {
+    font-size: 10px;
+    margin-left: 10px;
+  }
+
+  .card {
+    width: 120px !important;
+    height: 120px !important;
+  }
+
+  .card-container {
+    grid-template-columns: repeat(auto-fit, 140px) !important;
+  }
+
+  .header-title {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .card {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .card-container {
+    grid-template-columns: repeat(auto-fit, 100px) !important;
+  }
+
+  .game-rules {
+    font-size: 10px;
+  }
+
+  .deck-size-select {
+    width: 90px !important;
+    height: 48px !important;
+  }
 }

@@ -3,7 +3,6 @@ import Header from "../components/Header/Header";
 import { useState } from "react";
 import { FormControl, Select, MenuItem } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { Navigation } from "react-router";
 
 const Home = () => {
   const deckSizes = [3, 4, 5, 6, 7, 8, 9, 10];
@@ -11,8 +10,7 @@ const Home = () => {
 
   const navigate = useNavigate();
 
-  const startGame = (event) => {
-    event.preventDefault();
+  const startGame = () => {
     localStorage.setItem("state", null);
     localStorage.setItem("deckSize", deckSize);
     navigate(`/play/${deckSize}`);
