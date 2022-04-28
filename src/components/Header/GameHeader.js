@@ -13,6 +13,7 @@ const GameHeader = () => {
 
   const navigate = useNavigate();
 
+  //state reseted when the user clicks on the Start button
   const startGame = (event) => {
     event.preventDefault();
     localStorage.setItem("state", null);
@@ -20,6 +21,7 @@ const GameHeader = () => {
     window.location.replace(`/play/${deckSize}`);
   };
 
+  //navigates to home when the user click onto logo
   const backToHome = () => {
     navigate("/");
   };
