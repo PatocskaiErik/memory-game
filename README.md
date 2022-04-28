@@ -21,6 +21,8 @@
 
 - The user can set the number of cards (3-10) how many does he want to play with.
 - You can leave the game and resume it later or refresh the page without state loss.
+- Game has a step counter to count the tries
+- Best performance is stored in localstorage
 - Responsive UI.
 
 ## How To Use:
