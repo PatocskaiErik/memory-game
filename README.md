@@ -19,9 +19,9 @@
 
 ## Features:
 
-The user can set the number of cards (3-10) how many does he want to play with.
-You can leave the game and resume it later or refresh the page without state loss.
-Responsive UI.
+- The user can set the number of cards (3-10) how many does he want to play with.
+- You can leave the game and resume it later or refresh the page without state loss.
+- Responsive UI.
 
 ## How To Use:
 
