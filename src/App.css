@@ -126,7 +126,7 @@
   row-gap: 15px;
 }
 
-.card {
+.non-matched {
   box-sizing: border-box;
   width: 160px;
   height: 160px;
@@ -137,29 +137,61 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s;
 }
 
-.card img {
+.non-matched img {
   width: 70%;
 }
 
-.show {
-  display: block;
-}
-.hide {
-  display: none;
+.front-card {
+  box-sizing: border-box;
+  width: 160px;
+  height: 160px;
+  border-radius: 10px;
+  background-color: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transform: rotateY(180deg);
+  transition: all 0.5s ease;
 }
 
-.matched {
+.back-card {
+  box-sizing: border-box;
+  width: 160px;
+  height: 160px;
   border-radius: 10px;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s;
+}
+
+.back {
+  display: block;
+  transition: all 0.5s ease;
+  transform: rotateY(180deg);
+}
+
+.front {
+  display: none;
+  transition: all 0.5s ease;
+  transform: rotateY(180deg);
+}
+
+.matched {
+  width: 160px;
+  height: 160px;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transform: rotateY(-180deg);
 }
 
 .matched img {
@@ -243,7 +275,27 @@
   }
 
   .matched img {
-    width: 50% !important;
+    width: 70% !important;
+  }
+
+  .front-card {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .back-card {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .non-matched {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .matched {
+    width: 100px !important;
+    height: 100px !important;
   }
 
   .restart-button {
@@ -283,7 +335,22 @@
 }
 
 @media screen and (max-width: 414px) {
-  .card {
+  .front-card {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .back-card {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .non-matched {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .matched {
     width: 100px !important;
     height: 100px !important;
   }

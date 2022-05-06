@@ -3,6 +3,19 @@ import cards from "../components/cards/cards";
 import GameHeader from "../components/Header/GameHeader";
 import "../App.css";
 import { useState, useEffect } from "react";
+import { Modal } from "@mui/material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  p: 4
+};
 
 const Game = () => {
   const { numberOfCards } = useParams();
@@ -15,6 +28,11 @@ const Game = () => {
   const [bestScore, setBestScore] = useState(
     localStorage.getItem("bestResult") || 0
   );
+  const [flipped, setFlipped] = useState(false);
+  const [gameIsEnd, setGameIsEnd] = useState(false);
+
+  const openModal = () => setGameIsEnd(true);
+  const closeModal = () => setGameIsEnd(false);
 
   //data for localstorage
   const localState = {
@@ -36,6 +54,7 @@ const Game = () => {
   //every click on a card increases the number of moves with 1
   //every click on a card save the actually state into localstorage
   const cardClicked = (index, name) => {
+    setFlipped(!flipped);
     if (activeCards.length === 0) {
       setActiveCards([index]);
       setCardNames([name]);
@@ -52,8 +71,18 @@ const Game = () => {
       setActiveCards([index]);
       setCardNames([name]);
     }
-    setMoves(moves + 1);
     localStorage.setItem("state", JSON.stringify(localState));
+
+    counting();
+  };
+
+  //count the points when flipping a pair
+  const counting = () => {
+    if (pairs.length + 2 < deck.length && flipped) {
+      setMoves(moves + 1);
+    } else {
+      setMoves(moves);
+    }
   };
 
   //check the names of two cards and check the card is not the same where user have clicked on it before
@@ -65,9 +94,9 @@ const Game = () => {
 
   const checkEnd = () => {
     if (pairs.length + 2 === deck.length) {
-      alert("Congratulations! Your score is " + moves + " in this round.");
-      if (moves < bestScore) {
-        localStorage.setItem("bestResult", moves);
+      openModal();
+      if (bestScore === 0 || moves < bestScore) {
+        localStorage.setItem("bestResult", moves + 1);
       }
     }
   };
@@ -112,6 +141,21 @@ const Game = () => {
   return (
     <div>
       <GameHeader numberOfCards={numberOfCards} />
+      <Modal
+        open={gameIsEnd}
+        onClose={closeModal}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Congratulations!
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Your score is" {moves} in this round.
+          </Typography>
+        </Box>
+      </Modal>
       <div className="game-container">
         <div className="data-container">
           <div className="tries">
@@ -130,16 +174,18 @@ const Game = () => {
 
             const matched = pairs.indexOf(index) !== -1;
             return (
-              <div
-                key={index}
-                className={matched ? "matched" : "card"}
-                onClick={() => cardClicked(index, card.name)}
-              >
-                <img
-                  src={"/images/cards/" + card.image}
-                  alt={card.name}
-                  className={clicked || matched ? "show" : "hide"}
-                />
+              <div className={clicked && !matched ? "front-card" : "back-card"}>
+                <div
+                  key={index}
+                  className={matched ? "matched" : "non-matched"}
+                  onClick={() => cardClicked(index, card.name)}
+                >
+                  <img
+                    src={"/images/cards/" + card.image}
+                    alt={card.name}
+                    className={clicked || matched ? "back" : "front"}
+                  />
+                </div>
               </div>
             );
           })}
