@@ -13,11 +13,11 @@ const Home = () => {
   const startGame = () => {
     localStorage.setItem("state", null);
     localStorage.setItem("deckSize", deckSize);
-    navigate(`/play/${deckSize}`);
+    navigate(`/${deckSize}`);
   };
 
   return (
-    <div>
+    <body>
       <Header />
       <h1 className="home-title">Splendex Memory Game</h1>
       <div className="deck-size-label">Deck Size</div>
@@ -57,7 +57,7 @@ const Home = () => {
         <div>If they are not, they will flip back.</div>
         <div>The game ends when all the cards are removed.</div>
       </div>
-    </div>
+    </body>
   );
 };
 export default Home;

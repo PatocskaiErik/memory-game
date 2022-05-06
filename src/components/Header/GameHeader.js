@@ -18,7 +18,7 @@ const GameHeader = () => {
     event.preventDefault();
     localStorage.setItem("state", null);
     localStorage.setItem("deckSize", deckSize);
-    window.location.replace(`/play/${deckSize}`);
+    window.location.replace(`/${deckSize}`);
   };
 
   //navigates to home when the user click onto logo
