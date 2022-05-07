@@ -5,22 +5,20 @@ import { useState } from "react";
 import { Select, MenuItem } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import Game from "../../pages/Game";
 
-const GameHeader = () => {
+const GameHeader = ({ numberOfCards }) => {
   const deckSizes = [3, 4, 5, 6, 7, 8, 9, 10];
   const [deckSize, setDeckSize] = useState(
     localStorage.getItem("deckSize", (e) => e.target.value)
   );
 
-  const numberOfCards = localStorage.getItem("deckSize", (e) => e.target.value);
   const navigate = useNavigate();
 
   //state reseted when the user clicks on the Start button
   const startGame = () => {
     localStorage.setItem("state", null);
     localStorage.setItem("deckSize", deckSize);
-    window.location.reload();
+    window.location.replace("/play");
   };
 
   //navigates to home when the user click onto logo

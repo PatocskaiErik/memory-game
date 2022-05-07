@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import cards from "../components/cards/cards";
 import GameHeader from "../components/Header/GameHeader";
 import "../App.css";
@@ -6,9 +5,8 @@ import { useState, useEffect } from "react";
 import { Modal } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { useNavigate } from "react-router-dom";
 
-const style = {
+const ModalStyle = {
   position: "absolute",
   top: "50%",
   left: "50%",
@@ -19,22 +17,15 @@ const style = {
 };
 
 const Game = () => {
-  const navigate = useNavigate();
-  const [numberOfCards, setNumberOfCards] = useState(
-    localStorage.getItem("deckSize", (e) => e.target.value)
-  );
+  const numberOfCards = localStorage.getItem("deckSize", (e) => e.target.value);
+  const bestScore = localStorage.getItem("bestResult") || 0;
 
   const [deck, setDeck] = useState([...cards]);
   const [activeCards, setActiveCards] = useState([]);
   const [cardNames, setCardNames] = useState([]);
   const [pairs, setPairs] = useState([]);
   const [moves, setMoves] = useState(0);
-  const [bestScore, setBestScore] = useState(
-    localStorage.getItem("bestResult") || 0
-  );
-  const [deckSize, setDeckSize] = useState(
-    localStorage.getItem("deckSize", (e) => e.target.value)
-  );
+
   const [flipped, setFlipped] = useState(false);
   const [gameIsEnd, setGameIsEnd] = useState(false);
 
@@ -53,8 +44,7 @@ const Game = () => {
   //empty the localstorage when user click on the restart button
   const restartGame = () => {
     localStorage.setItem("state", null);
-    navigate("/play");
-    window.location.reload();
+    window.location.replace("/play");
   };
 
   //card data stored in useState after click on it
@@ -148,26 +138,31 @@ const Game = () => {
 
   return (
     <div>
-      <GameHeader />
+      <GameHeader
+        numberOfCards={numberOfCards}
+        loadState={loadState}
+        deal={deal}
+      />
       <Modal
         open={gameIsEnd}
         onClose={closeModal}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={ModalStyle}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Congratulations!
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Your score is {moves} in this round.
+            Your score is {moves + 1} in this round.
           </Typography>
         </Box>
       </Modal>
       <div className="game-container">
         <div className="data-container">
           <div className="tries">
-            Current tries: <span>{moves}</span>
+            Current tries:{" "}
+            <span>{pairs.length === deck.length ? moves + 1 : moves}</span>
           </div>
           <div className="best-result">
             Best: <br /> <span>{bestScore}</span>
