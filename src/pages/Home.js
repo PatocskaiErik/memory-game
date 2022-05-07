@@ -13,7 +13,7 @@ const Home = () => {
   const startGame = () => {
     localStorage.setItem("state", null);
     localStorage.setItem("deckSize", deckSize);
-    navigate(`/${deckSize}`);
+    navigate("/play");
   };
 
   return (

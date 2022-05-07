@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Modal } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { useNavigate } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -18,7 +19,10 @@ const style = {
 };
 
 const Game = () => {
-  const { numberOfCards } = useParams();
+  const navigate = useNavigate();
+  const [numberOfCards, setNumberOfCards] = useState(
+    localStorage.getItem("deckSize", (e) => e.target.value)
+  );
 
   const [deck, setDeck] = useState([...cards]);
   const [activeCards, setActiveCards] = useState([]);
@@ -27,6 +31,9 @@ const Game = () => {
   const [moves, setMoves] = useState(0);
   const [bestScore, setBestScore] = useState(
     localStorage.getItem("bestResult") || 0
+  );
+  const [deckSize, setDeckSize] = useState(
+    localStorage.getItem("deckSize", (e) => e.target.value)
   );
   const [flipped, setFlipped] = useState(false);
   const [gameIsEnd, setGameIsEnd] = useState(false);
@@ -46,6 +53,7 @@ const Game = () => {
   //empty the localstorage when user click on the restart button
   const restartGame = () => {
     localStorage.setItem("state", null);
+    navigate("/play");
     window.location.reload();
   };
 
@@ -140,7 +148,7 @@ const Game = () => {
 
   return (
     <div>
-      <GameHeader numberOfCards={numberOfCards} />
+      <GameHeader />
       <Modal
         open={gameIsEnd}
         onClose={closeModal}
@@ -152,7 +160,7 @@ const Game = () => {
             Congratulations!
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Your score is" {moves} in this round.
+            Your score is {moves} in this round.
           </Typography>
         </Box>
       </Modal>
