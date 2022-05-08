@@ -177,13 +177,17 @@ const Game = () => {
 
             const matched = pairs.indexOf(index) !== -1;
             return (
-              <div className={clicked && !matched ? "front-card" : "back-card"}>
+              <div
+                className={clicked && !matched ? "front-card" : "back-card"}
+                key={index}
+              >
                 <div
                   key={index}
                   className={matched ? "matched" : "non-matched"}
                   onClick={() => cardClicked(index, card.name)}
                 >
                   <img
+                    key={index}
                     src={"/images/cards/" + card.image}
                     alt={card.name}
                     className={clicked || matched ? "back" : "front"}
