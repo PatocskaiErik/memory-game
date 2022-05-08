@@ -1,3 +1,5 @@
+import { wait } from "@testing-library/react";
+
 describe("Memory Game", () => {
   before(() => {
     cy.visit("http://localhost:3000/");
@@ -8,11 +10,11 @@ describe("Memory Game", () => {
   });
 
   it("should have all data on the home page", () => {
-    cy.get("#root > div > div > header > img").should("have.attr", "alt");
+    cy.get("#root > div > home > header > img").should("have.attr", "alt");
 
     cy.get("div").contains("Deck Size");
     cy.get(
-      "#root > div > div > div.deck-size-form > div > div.MuiOutlinedInput-root.MuiInputBase-root.MuiInputBase-colorPrimary.MuiInputBase-formControl.deck-size-select.css-1ges8bc-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+      "#root > div > home > div.deck-size-form > div > div.MuiOutlinedInput-root.MuiInputBase-root.MuiInputBase-colorPrimary.MuiInputBase-formControl.deck-size-select.css-1ges8bc-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
     );
     cy.get("button").contains("Start New Game");
     cy.get("h2").contains("Game Rules");
@@ -35,7 +37,7 @@ describe("Memory Game", () => {
 
   it("should click onto the selector and check the values", () => {
     cy.get(
-      "#root > div > div > div.deck-size-form > div > div.MuiOutlinedInput-root.MuiInputBase-root.MuiInputBase-colorPrimary.MuiInputBase-formControl.deck-size-select.css-1ges8bc-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+      "#root > div > home > div.deck-size-form > div > div.MuiOutlinedInput-root.MuiInputBase-root.MuiInputBase-colorPrimary.MuiInputBase-formControl.deck-size-select.css-1ges8bc-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
     ).click();
 
     cy.contains(3);
@@ -53,7 +55,7 @@ describe("Memory Game", () => {
       "#menu- > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiMenu-paper.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper > ul > li:nth-child(3)"
     ).click();
     cy.get(
-      "#root > div > div > div.deck-size-form > div > div.MuiOutlinedInput-root.MuiInputBase-root.MuiInputBase-colorPrimary.Mui-focused.MuiInputBase-formControl.deck-size-select.css-1ges8bc-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root > div"
+      "#root > div > home > div.deck-size-form > div > div.MuiOutlinedInput-root.MuiInputBase-root.MuiInputBase-colorPrimary.Mui-focused.MuiInputBase-formControl.deck-size-select.css-1ges8bc-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root > div"
     ).contains(5);
     cy.get("button").contains("Start New Game").click();
     cy.get("header").contains("Deck Size");
